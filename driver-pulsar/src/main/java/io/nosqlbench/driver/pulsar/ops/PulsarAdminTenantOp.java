@@ -42,19 +42,14 @@ public class PulsarAdminTenantOp extends PulsarAdminOp {
 
         // Admin API - create tenants and namespaces
         if (!adminDelOp) {
-            TenantInfo tenantInfo = TenantInfo.builder()
-                .adminRoles(adminRoleSet)
-                .allowedClusters(!allowedClusterSet.isEmpty() ? allowedClusterSet : clientSpace.getPulsarClusterMetadata())
-                .build();
-
             try {
                 if (!asyncApi) {
-                    tenants.createTenant(tenant, tenantInfo);
+                    tenants.createTenant(tenant, null);
                     if (logger.isDebugEnabled()) {
                         logger.debug("Successful sync creation of tenant {}", tenant);
                     }
                 } else {
-                    CompletableFuture<Void> future = tenants.createTenantAsync(tenant, tenantInfo);
+                    CompletableFuture<Void> future = tenants.createTenantAsync(tenant, null);
                     future.whenComplete((unused, throwable) -> {
                         if (logger.isDebugEnabled()) {
                             logger.debug("Successful async creation of tenant {}", tenant);

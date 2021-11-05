@@ -6,7 +6,7 @@ import org.apache.avro.io.BinaryDecoder;
 import org.apache.pulsar.client.api.schema.Field;
 import org.apache.pulsar.client.api.schema.GenericRecord;
 import org.apache.pulsar.client.api.schema.GenericRecordBuilder;
-import org.apache.pulsar.client.impl.schema.SchemaInfoImpl;
+//import org.apache.pulsar.client.impl.schema.SchemaInfoImpl;
 import org.apache.pulsar.client.impl.schema.generic.GenericAvroSchema;
 import org.apache.pulsar.common.schema.SchemaInfo;
 import org.apache.pulsar.common.schema.SchemaType;
@@ -62,13 +62,14 @@ public class AvroUtil {
     ////////////////////////
     // Get a Pulsar Avro schema from a string definition
     public static GenericAvroSchema GetSchema_PulsarAvro(String schemaName, String avroSchemDef) {
-        SchemaInfo schemaInfo = SchemaInfoImpl.builder()
-            .schema(avroSchemDef.getBytes(StandardCharsets.UTF_8))
-            .type(SchemaType.AVRO)
-            .properties(new HashMap<>())
-            .name(schemaName)
-            .build();
-        return new GenericAvroSchema(schemaInfo);
+//        SchemaInfo schemaInfo = SchemaInfoImpl.builder()
+//            .schema(avroSchemDef.getBytes(StandardCharsets.UTF_8))
+//            .type(SchemaType.AVRO)
+//            .properties(new HashMap<>())
+//            .name(schemaName)
+//            .build();
+//        return new GenericAvroSchema(schemaInfo);
+        return null;
     }
 
     // Get a Pulsar Avro record from an OSS Avro schema record, matching a specific Pulsar Avro schema

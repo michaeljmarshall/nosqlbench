@@ -218,9 +218,6 @@ public class PulsarSpace {
                     logger.warn("Error while starting a new transaction", err);
                 }
                 throw new RuntimeException(err);
-            } catch (PulsarClientException err) {
-                throw new RuntimeException("Transactions are not enabled on Pulsar Client, " +
-                    "please set client.enableTransaction=true in your Pulsar Client configuration");
             }
         };
     }
